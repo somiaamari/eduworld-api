@@ -94,7 +94,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   console.log('Expires At:', newUser.emailConfirmationExpires);
 
   // 🔹 Construct the confirmation URL
-  const confirmURL = `http://localhost:3000/confirm-email/${emailToken}`;
+  const confirmURL = `https://edduworld.netlify.app/confirm-email/${emailToken}`;
 
   try {
     // 🔹 Send confirmation email
@@ -342,7 +342,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 3) Send it to user's email
   try {
     // ✅ Send the correct frontend URL to the user
-    const resetURL = `http://localhost:3000/reset-password/${resetToken}`;
+    const resetURL = `https://edduworld.netlify.app/reset-password/${resetToken}`;
     await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({

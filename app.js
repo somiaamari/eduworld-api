@@ -27,7 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // 1️⃣ ✅ CORS FIX - Allow Frontend & Credentials
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow frontend requests
+  origin: 'https://edduworld.netlify.app', // Allow frontend requests
   credentials: true // Allow cookies/auth headers
 }));
 
