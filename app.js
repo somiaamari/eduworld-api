@@ -1,0 +1,110 @@
+const path = require('path');
+const express = require('express');
+const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const compression = require('compression');
+const cors = require('cors');
+
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
+const courseRouter = require('./routes/courseRoutes');
+const userRouter = require('./routes/userRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
+const articleRouter = require('./routes/articleRoutes');
+const sectionRouter = require('./routes/sectionRoutes');
+
+const app = express();
+
+app.enable('trust proxy');
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+// 1️⃣ ✅ CORS FIX - Allow Frontend & Credentials
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow frontend requests
+  credentials: true // Allow cookies/auth headers
+}));
+
+// 2️⃣ ✅ Handle Preflight Requests (PATCH, DELETE, etc.)
+app.options('*', cors()); 
+app.use((req, res, next) => {
+  console.log('Cookies:', req.cookies);
+  console.log('Signed Cookies:', req.signedCookies);
+  next();
+});
+
+
+// Serving static files
+app.use(express.static(path.join(__dirname, 'public')));
+     
+// Set security HTTP headers
+app.use(helmet());
+
+// Development logging
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
+// Limit requests from same API
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP, please try again in an hour!'
+});
+app.use('/api', limiter);
+
+// Body parser, reading data from body into req.body
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(cookieParser(process.env.JWT_SECRET));
+
+// Data sanitization against NoSQL query injection
+app.use(mongoSanitize());
+
+// Data sanitization against XSS
+app.use(xss());
+
+// Prevent parameter pollution
+app.use(
+  hpp({
+    whitelist: [
+      'duration',
+      'ratingsQuantity',
+      'ratingsAverage',
+      'maxGroupSize',
+      'difficulty',
+      'price'
+    ]
+  })
+);
+
+app.use(compression());
+
+// Middleware for debugging requests
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  console.log(`[${req.method}] ${req.originalUrl} - Time: ${req.requestTime}`);
+  next();
+});
+
+// 3️⃣ ✅ ROUTES
+app.use('/api/course', courseRouter);
+app.use('/api/users', userRouter);
+app.use('/api/reviews', reviewRouter);
+app.use('/api/article', articleRouter);
+app.use('/api/section', sectionRouter);
+
+// Handle 404 errors
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.use(globalErrorHandler);
+
+module.exports = app;

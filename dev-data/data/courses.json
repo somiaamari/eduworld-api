@@ -1,0 +1,250 @@
+[
+  {
+    "_id": "e11dbb6c48e49cb593ec6cb8",
+    "name": "Course 1",
+    "slug": "course-1",
+    "duration": 5657,
+    "category": "educate",
+    "level": "Expert",
+    "numStudent": 486,
+    "numLessons": 5,
+    "ratingsAverage": 4.6,
+    "ratingsQuantity": 5,
+    "price": 103.08,
+    "isPaid": true,
+    "summary": "This is a summary for course 1.",
+    "description": "This is a detailed description for course 1.",
+    "imageCover": "https://example.com/course-1.jpg",
+    "createdAt": "2023-03-11T11:52:30.739756",
+    "startDates": [
+      "2023-11-09T11:52:30.739760",
+      "2024-04-13T11:52:30.739764",
+      "2023-03-29T11:52:30.739768"
+    ],
+    "instructor": "5c8a211f2f8fb814b56fa188",
+    "sections": [
+      "edf25e633e2b01e28b06320b",
+      "eeb3e9c8d942462a6c3fd224",
+      "9534b09fc1c123d3bf0e431a",
+      "bc6f4bf0cde3604d5c76fde0",
+      "fbe9e33a4a2ff51150e7b9ed"
+    ]
+  },
+  {
+    "_id": "79d9c50fc146a3539e0317b6",
+    "name": "Course 2",
+    "slug": "course-2",
+    "duration": 7084,
+    "category": "marketing",
+    "level": "Expert",
+    "numStudent": 678,
+    "numLessons": 5,
+    "ratingsAverage": 4.1,
+    "ratingsQuantity": 5,
+    "price": 179.03,
+    "isPaid": false,
+    "summary": "This is a summary for course 2.",
+    "description": "This is a detailed description for course 2.",
+    "imageCover": "https://example.com/course-2.jpg",
+    "createdAt": "2024-04-23T11:52:30.739907",
+    "startDates": [
+      "2023-04-19T11:52:30.739911",
+      "2022-05-15T11:52:30.739914",
+      "2023-06-28T11:52:30.739917"
+    ],
+    "instructor": "5c8a211f2f8fb814b56fa188",
+    "sections": [
+      "740f916407c45d4c09f6f806",
+      "f64e007bf343eebed38ed2c0",
+      "6f6e2ec88d16d57f64172fad",
+      "6d249b1a809c3978e1c50c10",
+      "baaed61e360a5aa440c22c7f"
+    ]
+  },
+  {
+    "_id": "56aaf3369c1041fa27ce0e99",
+    "name": "Course 3",
+    "slug": "course-3",
+    "duration": 3782,
+    "category": "educate",
+    "level": "Intermediate",
+    "numStudent": 819,
+    "numLessons": 5,
+    "ratingsAverage": 3.8,
+    "ratingsQuantity": 5,
+    "price": 111.03,
+    "isPaid": false,
+    "summary": "This is a summary for course 3.",
+    "description": "This is a detailed description for course 3.",
+    "imageCover": "https://example.com/course-3.jpg",
+    "createdAt": "2024-07-18T11:52:30.740028",
+    "startDates": [
+      "2022-12-17T11:52:30.740032",
+      "2024-04-09T11:52:30.740035",
+      "2023-09-03T11:52:30.740037"
+    ],
+    "instructor": "5c8a1d5b0190b214360dc057",
+    "sections": [
+      "4789fb6634417a173a905200",
+      "3103ce9d4761d372ece0f6fb",
+      "a478390301afa2bf14e6e2a2",
+      "9ce178cece5303491be6c454",
+      "10b015c41893243db10095df"
+    ]
+  },
+  {
+    "_id": "50ceb8e571758a93169da0c3",
+    "name": "Course 4",
+    "slug": "course-4",
+    "duration": 4177,
+    "category": "educate",
+    "level": "Expert",
+    "numStudent": 277,
+    "numLessons": 5,
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 5,
+    "price": 171.98,
+    "isPaid": false,
+    "summary": "This is a summary for course 4.",
+    "description": "This is a detailed description for course 4.",
+    "imageCover": "https://example.com/course-4.jpg",
+    "createdAt": "2023-07-13T11:52:30.740161",
+    "startDates": [
+      "2023-08-28T11:52:30.740165",
+      "2023-02-28T11:52:30.740168",
+      "2024-09-25T11:52:30.740171"
+    ],
+    "instructor": "5c8a1ec62f8fb814b56fa183",
+    "sections": [
+      "7bcd836d6e3d8a2bc4b073d1",
+      "3dced8a56b302c39a11e15b1",
+      "2fd64645bb7908b837081bad",
+      "37d61ed6045a8eab848b7a12",
+      "467db1832cb53d29f3943e8d"
+    ]
+  },
+  {
+    "_id": "2a5e70c8dacceeded728f00b",
+    "name": "Course 5",
+    "slug": "course-5",
+    "duration": 5419,
+    "category": "webdev",
+    "level": "Intermediate",
+    "numStudent": 325,
+    "numLessons": 5,
+    "ratingsAverage": 3.6,
+    "ratingsQuantity": 5,
+    "price": 50.01,
+    "isPaid": false,
+    "summary": "This is a summary for course 5.",
+    "description": "This is a detailed description for course 5.",
+    "imageCover": "https://example.com/course-5.jpg",
+    "createdAt": "2022-07-22T11:52:30.740304",
+    "startDates": [
+      "2024-09-01T11:52:30.740308",
+      "2022-07-15T11:52:30.740311",
+      "2023-11-13T11:52:30.740313"
+    ],
+    "instructor": "5c8a1f4e2f8fb814b56fa185",
+    "sections": [
+      "1c1046b1c25521bfe5ed55fd",
+      "279b1a7a3cca1b0be4448720",
+      "aa40003bd85dc898681e32ea",
+      "01471e53a7f7d4f690326586",
+      "186b86fe471d3a320dd7c444"
+    ]
+  },
+  {
+    "_id": "4089353417551b0dde65e668",
+    "name": "Course 6",
+    "slug": "course-6",
+    "duration": 6892,
+    "category": "shop",
+    "level": "Beginner",
+    "numStudent": 285,
+    "numLessons": 5,
+    "ratingsAverage": 4.8,
+    "ratingsQuantity": 5,
+    "price": 164.88,
+    "isPaid": true,
+    "summary": "This is a summary for course 6.",
+    "description": "This is a detailed description for course 6.",
+    "imageCover": "https://example.com/course-6.jpg",
+    "createdAt": "2023-08-15T11:52:30.740449",
+    "startDates": [
+      "2024-06-10T11:52:30.740455",
+      "2024-11-24T11:52:30.740460",
+      "2023-11-10T11:52:30.740464"
+    ],
+    "instructor": "5c8a22c62f8fb814b56fa18b",
+    "sections": [
+      "0d59da91dc13da3d4a0f084f",
+      "5eedfd69bdab76446909c906",
+      "880165ba578f74ad728a982e",
+      "f35ef506dabe3bc98e47919c",
+      "eb358a41529e9fcd9eac96be"
+    ]
+  },
+  {
+    "_id": "e5a966ba53a07a27b5a95129",
+    "name": "Course 7",
+    "slug": "course-7",
+    "duration": 5636,
+    "category": "design",
+    "level": "Expert",
+    "numStudent": 446,
+    "numLessons": 5,
+    "ratingsAverage": 4.8,
+    "ratingsQuantity": 5,
+    "price": 85.79,
+    "isPaid": true,
+    "summary": "This is a summary for course 7.",
+    "description": "This is a detailed description for course 7.",
+    "imageCover": "https://example.com/course-7.jpg",
+    "createdAt": "2023-09-11T11:52:30.740601",
+    "startDates": [
+      "2023-04-30T11:52:30.740607",
+      "2023-02-22T11:52:30.740610",
+      "2022-12-16T11:52:30.740613"
+    ],
+    "instructor": "5c8a21f22f8fb814b56fa18a",
+    "sections": [
+      "4c2f77e558bd2fb1be000ff1",
+      "4152358043fcd082559ab388",
+      "dcaa312f8603d30bd353a235",
+      "a18d9e4d867692a28111cd5f",
+      "5bd9cd859ce72956e9b82ba5"
+    ]
+  },
+  {
+    "_id": "368b54e685a47c280c8db744",
+    "name": "Course 8",
+    "slug": "course-8",
+    "duration": 7017,
+    "category": "educate",
+    "level": "Expert",
+    "numStudent": 540,
+    "numLessons": 5,
+    "ratingsAverage": 4.9,
+    "ratingsQuantity": 5,
+    "price": 99.49,
+    "isPaid": true,
+    "summary": "This is a summary for course 8.",
+    "description": "This is a detailed description for course 8.",
+    "imageCover": "https://example.com/course-8.jpg",
+    "createdAt": "2023-09-12T11:52:30.740718",
+    "startDates": [
+      "2023-10-13T11:52:30.740722",
+      "2022-12-17T11:52:30.740724",
+      "2022-05-28T11:52:30.740727"
+    ],
+    "instructor": "5c8a1dfa2f8fb814b56fa181",
+    "sections": [
+      "5da017cb60860f24c0efee30",
+      "d302c6af6023d26bfd0eb673",
+      "7b8c05de390c2daa199c89f4",
+      "71bbbd522db237b42871b671",
+      "7c4c3aa1bd9c66fcc8160269"
+    ]
+  }
+]

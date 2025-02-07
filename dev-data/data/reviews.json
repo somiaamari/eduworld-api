@@ -1,0 +1,177 @@
+[
+  {
+    "_id":  "64e8fdf6e2c59a0c85471201" ,
+    "review": "Amazing course, very detailed and helpful!",
+    "rating": 5.0,
+    "user": "5c8a1d5b0190b214360dc057",
+    "course": "e11dbb6c48e49cb593ec6cb8"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471202" ,
+    "review": "Good insights, but I expected more examples.",
+    "rating": 4.2,
+    "user": "5c8a1dfa2f8fb814b56fa181",
+    "course": "e11dbb6c48e49cb593ec6cb8"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471203" ,
+    "review": "Perfect balance of theory and practice.",
+    "rating": 4.8,
+    "user": "5c8a1e1a2f8fb814b56fa182",
+    "course": "e11dbb6c48e49cb593ec6cb8"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471204" ,
+    "review": "Very well-explained and easy to follow.",
+    "rating": 4.5,
+    "user": "5c8a1ec62f8fb814b56fa183",
+    "course": "e11dbb6c48e49cb593ec6cb8"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471205" ,
+    "review": "A must for anyone interested in the subject.",
+    "rating": 5.0,
+    "user": "5c8a1f292f8fb814b56fa184",
+    "course": "e11dbb6c48e49cb593ec6cb8"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471206",
+    "review": "Helpful content but a bit fast-paced.",
+    "rating": 4.0,
+    "user": "5c8a201e2f8fb814b56fa186",
+    "course": "79d9c50fc146a3539e0317b6"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471207",
+    "review": "Excellent resources provided.",
+    "rating": 4.5,
+    "user": "5c8a211f2f8fb814b56fa188",
+    "course": "79d9c50fc146a3539e0317b6"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471208",
+    "review": "Informative but could use better examples.",
+    "rating": 3.8,
+    "user": "5c8a21d02f8fb814b56fa189",
+    "course": "79d9c50fc146a3539e0317b6"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471209" ,
+    "review": "Engaging and very well-structured.",
+    "rating": 4.7,
+    "user": "5c8a21f22f8fb814b56fa18a",
+    "course": "79d9c50fc146a3539e0317b6"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c8547120A" ,
+    "review": "This course exceeded my expectations!",
+    "rating": 4.9,
+    "user": "5c8a22c62f8fb814b56fa18b",
+    "course": "79d9c50fc146a3539e0317b6"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c8547120B",
+    "review": "Loved every minute of this course.",
+    "rating": 4.8,
+    "user": "5c8a23c82f8fb814b56fa18d",
+    "course": "56aaf3369c1041fa27ce0e99"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c8547120C",
+    "review": "Clear explanations and great examples.",
+    "rating": 4.7,
+    "user": "5c8a23de2f8fb814b56fa18e",
+    "course": "56aaf3369c1041fa27ce0e99"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c8547120D" ,
+    "review": "A perfect course for beginners.",
+    "rating": 5.0,
+    "user": "5c8a24282f8fb814b56fa18f",
+    "course": "56aaf3369c1041fa27ce0e99"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c8547120E" ,
+    "review": "Great learning experience.",
+    "rating": 4.6,
+    "user": "5c8a24402f8fb814b56fa190",
+    "course": "56aaf3369c1041fa27ce0e99"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c8547120F" ,
+    "review": "Well-designed and highly engaging.",
+    "rating": 4.8,
+    "user": "5c8a24822f8fb814b56fa192",
+    "course": "56aaf3369c1041fa27ce0e99"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471210" ,
+    "review": "Best course I have taken so far.",
+    "rating": 5.0,
+    "user": "5c8a1d5b0190b214360dc057",
+    "course": "50ceb8e571758a93169da0c3"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471211",
+    "review": "Helped me improve my skills immensely.",
+    "rating": 4.9,
+    "user": "5c8a1dfa2f8fb814b56fa181",
+    "course": "50ceb8e571758a93169da0c3"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471212" ,
+    "review": "A bit repetitive but still useful.",
+    "rating": 4.2,
+    "user": "5c8a1e1a2f8fb814b56fa182",
+    "course": "50ceb8e571758a93169da0c3"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471213" ,
+    "review": "Great insights into the topic.",
+    "rating": 4.5,
+    "user": "5c8a1ec62f8fb814b56fa183",
+    "course": "50ceb8e571758a93169da0c3"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471214" ,
+    "review": "Would recommend to anyone interested!",
+    "rating": 4.8,
+    "user": "5c8a1f292f8fb814b56fa184",
+    "course": "50ceb8e571758a93169da0c3"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471215" ,
+    "review": "Practical and easy to understand.",
+    "rating": 4.7,
+    "user": "5c8a201e2f8fb814b56fa186",
+    "course": "2a5e70c8dacceeded728f00b"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471216" ,
+    "review": "Learned a lot in a short time.",
+    "rating": 4.6,
+    "user": "5c8a211f2f8fb814b56fa188",
+    "course": "2a5e70c8dacceeded728f00b"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471217" ,
+    "review": "The examples could be better.",
+    "rating": 4.0,
+    "user": "5c8a21d02f8fb814b56fa189",
+    "course": "2a5e70c8dacceeded728f00b"
+  },
+  {
+    "_id":  "64e8fdf6e2c59a0c85471218" ,
+    "review": "In-depth and well-organized.",
+    "rating": 4.8,
+    "user": "5c8a21f22f8fb814b56fa18a",
+    "course": "2a5e70c8dacceeded728f00b"
+  },
+  {
+    "_id": "64e8fdf6e2c59a0c85471219" ,
+    "review": "Highly engaging and informative.",
+    "rating": 5.0,
+    "user": "5c8a22c62f8fb814b56fa18b",
+    "course": "2a5e70c8dacceeded728f00b"
+  }
+]
