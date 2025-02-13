@@ -38,6 +38,14 @@ app.use((req, res, next) => {
   console.log('Signed Cookies:', req.signedCookies);
   next();
 });
+app.use(cors({
+  origin: 'https://edduworld.netlify.app', // Allow frontend requests
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  allowedHeaders: 'Content-Type,Authorization'
+}));
+app.options('*', cors());
+
 
 
 // Serving static files
