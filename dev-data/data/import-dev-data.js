@@ -10,7 +10,7 @@ const Section = require('./../../models/sectionModel');
 dotenv.config({ path: './config.env' });
 
 mongoose
-  .connect(process.env.DATABASE_LOCAL, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false
