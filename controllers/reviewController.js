@@ -11,8 +11,11 @@ exports.setCourseUserIds = (req, res, next) => {
 
 exports.getReviewsForCourse = catchAsync(async (req, res, next) => {
   console.log("Requested Course ID:", req.params.courseId, "Type:", typeof req.params.courseId);
+  const courseId = req.params.courseId.toString(); // Ensure it's a string
+  const reviews = await Review.find({ course: courseId });
 
-  const reviews = await Review.find({ course: req.params.courseId });
+
+
 
   console.log("Found Reviews:", reviews);
 
