@@ -12,7 +12,7 @@ exports.setCourseUserIds = (req, res, next) => {
 exports.getReviewsForCourse = catchAsync(async (req, res, next) => {
   console.log(req.params.courseId);
   const reviews = await Review.find({ course: req.params.courseId });
-
+  console.log("reviews homa " , reviews);
   res.status(200).json({
     status: 'success',
     results: reviews.length,
