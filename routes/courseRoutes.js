@@ -2,6 +2,7 @@ const express = require('express');
 const courseController = require('./../controllers/courseController');
 const authController = require('./../controllers/authController');
 const reviewRouter = require('./../routes/reviewRoutes');
+const sectionRouter = require ('./../routes/sectionRoutes');
 
 const router = express.Router();
 
@@ -13,6 +14,8 @@ const router = express.Router();
 // console.log(reviewRouter);
 
 router.use('/:courseId/reviews', reviewRouter);
+
+router.use('/:courseId/section', sectionRouter);
 
 router
   .route('/top-5-cheap')

@@ -1,33 +1,37 @@
 const mongoose = require('mongoose');
-const slugify = require('slugify');
-
+const Course = require('./courseModel');
 
 const sectionSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: [true, 'A section must have a name'],
-      unique: true,
       trim: true,
-      maxlength: [100, 'A course name must have less or equal then 40 characters'],
-      minlength: [10, 'A course name must have more or equal then 10 characters']
-      // validate: [validator.isAlpha, 'Tour name must only contain characters']
+      maxlength: [100, 'A section name must have less or equal than 100 characters'],
+      minlength: [10, 'A section name must have more or equal than 10 characters']
     },
     slug: String,
     duration: {
       type: Number,
-      required: [true, 'A course must have a duration']
+      required: [true, 'A section must have a duration']
     },
-   
-    videos:
-    [{
+    videos: [
+      {
         name: { type: String, required: true }, // Video title
         url: { type: String, required: true }, // Video URL or path
         duration: { type: Number }, // Duration in seconds
-        checked: Boolean,
-        
-    }]
-    
+        checked: Boolean
+      }
+    ],
+    createdAt: {
+      type: Date,
+      default: Date.now
+    },
+    course: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Course',
+      required: [true, 'Section must belong to a course.']
+    }
   },
   {
     toJSON: { virtuals: true },
@@ -35,23 +39,15 @@ const sectionSchema = new mongoose.Schema(
   }
 );
 
-// tourSchema.index({ price: 1 });
+sectionSchema.index({ course: 1, user: 1 }, { unique: false });
 
-sectionSchema.index({ slug: 1 });
-
-sectionSchema.virtual('durationWeeks').get(function() {
-  return this.duration / 7;
-});
-
-
-
-// DOCUMENT MIDDLEWARE: runs before .save() and .create()
-sectionSchema.pre('save', function(next) {
-  this.slug = slugify(this.name, { lower: true });
+sectionSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'course',
+    select: 'name'
+  });
   next();
 });
-
-
 
 const Section = mongoose.model('Section', sectionSchema);
 

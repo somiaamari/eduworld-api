@@ -99,7 +99,7 @@ const courseSchema = new mongoose.Schema(
         type: mongoose.Schema.ObjectId,
         ref: 'User'
       },
-      sections: [{ type: mongoose.Schema.Types.ObjectId, ref: "Section" }], 
+    sections: [{ type: mongoose.Schema.Types.ObjectId, ref: "Section" }], 
     
   },
   {

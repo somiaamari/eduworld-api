@@ -2,17 +2,19 @@ const express = require('express');
 const authController = require('./../controllers/authController');
 const sectionController = require('./../controllers/sectionController');
 
-const router = express.Router();
-
+const router = express.Router({ mergeParams: true });
 
 router
   .route('/')
-  .get(sectionController.getAllASections)
+  .get(sectionController.getAllSections)
   .post(
-    authController.protect,
-    authController.restrictTo('admin'),
+    // authController.protect,
+    
+    sectionController.setCourseId,
     sectionController.createSection
-  )
+  );
+
+router.get('/course/:courseId', sectionController.getSectionsForCourse);
 
 router
   .route('/:id')
