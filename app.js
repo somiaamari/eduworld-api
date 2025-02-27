@@ -25,6 +25,7 @@ app.enable('trust proxy');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
+
 // 1️⃣ ✅ CORS FIX - Allow Frontend & Credentials
 app.use(cors({
   origin: 'https://edduworld.netlify.app', // Allow frontend requests
@@ -38,6 +39,8 @@ app.use((req, res, next) => {
   console.log('Signed Cookies:', req.signedCookies);
   next();
 });
+app.use(cookieParser()); // ✅ Required to read cookies
+
 app.use(cors({
   origin: 'https://edduworld.netlify.app', // Allow frontend requests
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
