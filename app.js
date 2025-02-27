@@ -25,6 +25,11 @@ app.enable('trust proxy');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use((req, res, next) => {
+  console.log('Cookies Received:', req.cookies);
+  console.log('Headers:', req.headers);
+  next();
+});
 
 // 1️⃣ ✅ CORS FIX - Allow Frontend & Credentials
 app.use(cors({
