@@ -38,7 +38,7 @@ app.use(cors({
 }));
 
 // 2️⃣ ✅ Handle Preflight Requests (PATCH, DELETE, etc.)
-app.options('*', cors()); 
+// app.options('*', cors()); 
 app.use((req, res, next) => {
   console.log('Cookies:', req.cookies);
   console.log('Signed Cookies:', req.signedCookies);

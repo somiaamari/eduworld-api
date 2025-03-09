@@ -13,13 +13,15 @@ const createSendToken = (user, statusCode, req, res) => {
   });
 
   res.cookie('jwt', token, {
+    httpOnly: true,  // Sécurité (empêche l'accès via JS)
+    secure: true,   // Doit être `true` en production (HTTPS)
+    sameSite: 'none', // Indispensable pour les requêtes cross-site
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true, 
-    secure: req.secure || req.headers['x-forwarded-proto'] === 'https', 
+    // secure: req.secure || req.headers['x-forwarded-proto'] === 'https', 
     signed: false, // 🔴 Fix: Ensure it's unsigned to match frontend
-    sameSite: 'lax'
   });
 
   user.password = undefined; // Hide password from response
