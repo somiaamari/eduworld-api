@@ -30,6 +30,8 @@ app.use((req, res, next) => {
   console.log('Headers:', req.headers);
   next();
 });
+app.set('trust proxy', 1); // Définit un proxy de confiance
+
 
 // 1️⃣ ✅ CORS FIX - Allow Frontend & Credentials
 app.use(cors({
