@@ -39,6 +39,7 @@ app.use(cors({
   credentials: true // Allow cookies/auth headers
 }));
 
+
 const corsOptions = {
   origin: 'https://edduworld.netlify.app', // Autorise seulement ton frontend
   credentials: true, // Permet d'envoyer les cookies
@@ -62,6 +63,10 @@ app.use(cors({
   allowedHeaders: 'Content-Type,Authorization'
 }));
 app.options('*', cors());
+app.use('/api/users/isLoggedIn', (req, res, next) => {
+  console.log('Middleware après isLoggedIn exécuté.');
+  res.status(200).json({ message: 'Accès autorisé !' });
+});
 
 
 
