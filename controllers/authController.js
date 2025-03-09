@@ -14,8 +14,8 @@ const createSendToken = (user, statusCode, req, res) => {
 
   res.cookie('jwt', token, {
     httpOnly: true,  // Sécurité (empêche l'accès via JS)
-    secure: true,   // Doit être `true` en production (HTTPS)
-    sameSite: 'none', // Indispensable pour les requêtes cross-site
+    secure: process.env.NODE_ENV === 'production',  // Doit être `true` en production (HTTPS)
+    sameSite: 'None', // Indispensable pour les requêtes cross-site
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
