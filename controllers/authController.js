@@ -261,15 +261,18 @@ exports.isLoggedIn = async (req, res, next) => {
 
       // 2) Check if user still exists
       const currentUser = await User.findById(decoded.id);
-      if (!currentUser) {
-        console.log('dak l user rah makaynch ')
-        return next();
-      }
+      console.log('Utilisateur trouvé:', currentUser);
 
-      // 3) Check if user changed password after the token was issued
-      if (currentUser.changedPasswordAfter(decoded.iat)) {
-        return next();
+      if (!currentUser) {
+        console.log('Utilisateur introuvable, accès refusé.');
+        return res.status(403).json({ message: 'Utilisateur introuvable, veuillez vous reconnecter.' });
       }
+      
+      if (currentUser.changedPasswordAfter(decoded.iat)) {
+        console.log('Mot de passe modifié après l’authentification.');
+        return res.status(403).json({ message: 'Votre mot de passe a été modifié. Veuillez vous reconnecter.' });
+      }
+      
 
       // THERE IS A LOGGED IN USER
       res.locals.user = currentUser;
