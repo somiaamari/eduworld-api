@@ -39,6 +39,13 @@ app.use(cors({
   credentials: true // Allow cookies/auth headers
 }));
 
+const corsOptions = {
+  origin: 'https://edduworld.netlify.app', // Autorise seulement ton frontend
+  credentials: true, // Permet d'envoyer les cookies
+};
+
+app.use(cors(corsOptions));
+
 // 2️⃣ ✅ Handle Preflight Requests (PATCH, DELETE, etc.)
 // app.options('*', cors()); 
 app.use((req, res, next) => {
