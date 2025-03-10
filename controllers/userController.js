@@ -64,32 +64,52 @@ const filterObj = (obj, ...allowedFields) => {
   });
   return newObj;
 };
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 exports.getMe = async (req, res) => {
-  try {  
-   console.log("Cookies reçus:", req.cookies); // Vérifie si le JWT est reçu
+  try {
+    console.log("[GET] /api/users/me - Début de requête");
+    console.log("Cookies reçus:", req.cookies);
 
-    const token = req.cookies.jwt; // Récupère le token depuis les cookies
-
+    // Vérification de la présence du token
+    const token = req.cookies.jwt;
     if (!token) {
+      console.log("⚠️ Token manquant");
       return res.status(401).json({ message: "Non autorisé, token manquant" });
+    }
+
+    // Vérification du JWT_SECRET
+    if (!process.env.JWT_SECRET) {
+      console.log("⚠️ JWT_SECRET non défini !");
+      return res.status(500).json({ message: "Erreur serveur, JWT_SECRET manquant" });
     }
     console.log("JWT_SECRET utilisé:", process.env.JWT_SECRET);
 
+    // Vérification et décodage du token
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log("✅ Token décodé:", decoded);
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Vérifie et décode le token
-    console.log("Token décodé:", decoded);
-    const user = await User.findById(decoded.id).select("-password"); // Exclut le mot de passe
+      // Recherche de l'utilisateur
+      const user = await User.findById(decoded.id).select("-password");
+      if (!user) {
+        console.log("⚠️ Utilisateur non trouvé");
+        return res.status(404).json({ message: "Utilisateur non trouvé" });
+      }
 
-    if (!user) {
-      return res.status(404).json({ message: "Utilisateur non trouvé" });
+      console.log("✅ Utilisateur trouvé:", user);
+      res.json(user);
+    } catch (err) {
+      console.log("❌ Erreur de vérification du token:", err.message);
+      return res.status(401).json({ message: "Token invalide" });
     }
-
-    res.json(user);
   } catch (error) {
-    return res.status(401).json({ message: "Token invalide" });
+    console.log("❌ Erreur serveur:", error.message);
+    return res.status(500).json({ message: "Erreur serveur" });
   }
 };
+
 
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error if user POSTs password data
