@@ -74,6 +74,8 @@ exports.getMe = async (req, res) => {
     if (!token) {
       return res.status(401).json({ message: "Non autorisé, token manquant" });
     }
+    console.log("JWT_SECRET utilisé:", process.env.JWT_SECRET);
+
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET); // Vérifie et décode le token
     console.log("Token décodé:", decoded);
