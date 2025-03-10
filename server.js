@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-console.log("🔑 JWT_SECRET chargé :", process.env.JWT_SECRET);
 
 process.on('uncaughtException', err => {
   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
