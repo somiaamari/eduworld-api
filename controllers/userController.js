@@ -65,9 +65,25 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
-exports.getMe = (req, res, next) => {
-  req.params.id = req.user.id;
-  next();
+exports.getMe = async (req, res) => {
+  try {
+    const token = req.cookies.jwt; // Récupère le token depuis les cookies
+
+    if (!token) {
+      return res.status(401).json({ message: "Non autorisé, token manquant" });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Vérifie et décode le token
+    const user = await User.findById(decoded.id).select("-password"); // Exclut le mot de passe
+
+    if (!user) {
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    return res.status(401).json({ message: "Token invalide" });
+  }
 };
 
 exports.updateMe = catchAsync(async (req, res, next) => {
