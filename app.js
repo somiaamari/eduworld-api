@@ -63,10 +63,10 @@ app.use(cors({
   allowedHeaders: 'Content-Type,Authorization'
 }));
 app.options('*', cors());
-app.use('/api/users/isLoggedIn', (req, res, next) => {
-  console.log('Middleware après isLoggedIn exécuté.');
-  res.status(200).json({ message: 'Accès autorisé !' });
-});
+// app.use('/api/users/isLoggedIn', (req, res, next) => {
+//   console.log('Middleware après isLoggedIn exécuté.');
+//   res.status(200).json({ message: 'Accès autorisé !' });
+// });
 
 
 
@@ -74,8 +74,12 @@ app.use('/api/users/isLoggedIn', (req, res, next) => {
 app.use(express.static(path.join(__dirname, 'public')));
      
 // Set security HTTP headers
-app.use(helmet());
-
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false, // Allows cross-origin cookies
+    contentSecurityPolicy: false, // Disable CSP (for debugging)
+  })
+);
 // Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
