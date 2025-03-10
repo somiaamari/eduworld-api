@@ -6,6 +6,7 @@ const AppError = require('./../utils/appError');
 const factory = require('./handlerFactory');
 const fs = require('fs');
 const path = require('path');
+const jwt = require('jsonwebtoken'); 
 
 // const multerStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
