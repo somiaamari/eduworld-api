@@ -76,6 +76,7 @@ exports.getMe = async (req, res) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET); // Vérifie et décode le token
+    console.log("Token décodé:", decoded);
     const user = await User.findById(decoded.id).select("-password"); // Exclut le mot de passe
 
     if (!user) {
