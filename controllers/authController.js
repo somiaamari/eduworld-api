@@ -14,6 +14,7 @@ const createSendToken = (user, statusCode, req, res) => {
 
   res.cookie('jwt', token, {
     httpOnly: true,  // Sécurité (empêche l'accès via JS)
+    path: "/",
     secure: process.env.NODE_ENV === 'production',  // Doit être `true` en production (HTTPS)
     sameSite: 'None', // Indispensable pour les requêtes cross-site
     expires: new Date(

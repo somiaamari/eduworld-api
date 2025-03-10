@@ -66,7 +66,9 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 exports.getMe = async (req, res) => {
-  try {
+  try {  
+   console.log("Cookies reçus:", req.cookies); // Vérifie si le JWT est reçu
+
     const token = req.cookies.jwt; // Récupère le token depuis les cookies
 
     if (!token) {
