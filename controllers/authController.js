@@ -171,9 +171,16 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.logout = (req, res) => {
+  console.log("Cookies reçus:", req.cookies);
+
   res.cookie('jwt', 'loggedout', {
+    path: "/",
+    secure: process.env.NODE_ENV === 'production',  // Doit être `true` en production (HTTPS)
+    sameSite: 'None', // Indispensable pour les requêtes cross-site
     expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true
+    httpOnly: true,
+    signed: false, // 🔴 Fix: Ensure it's unsigned to match frontend
+
   });
   res.status(200).json({ status: 'success' });
 };
