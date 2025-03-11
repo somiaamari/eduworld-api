@@ -62,6 +62,8 @@ app.use(cors({
   credentials: true,
   allowedHeaders: 'Content-Type,Authorization'
 }));
+app.set("trust proxy", 1);  // 🔥 Indispensable sur Render/Vercel pour les cookies
+
 app.options('*', cors());
 // app.use('/api/users/isLoggedIn', (req, res, next) => {
 //   console.log('Middleware après isLoggedIn exécuté.');
