@@ -180,8 +180,8 @@ exports.logout = (req, res) => {
 
   res.cookie('jwt', 'loggedout', {
     path: "/",
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'None',
+    secure: false,  // 🔴 Tester avec `false` pour voir s'il est bloqué par HTTPS
+    sameSite: 'Lax',
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true
   });
