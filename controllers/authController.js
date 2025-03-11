@@ -173,16 +173,19 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.logout = (req, res) => {
   console.log("Cookies reçus:", req.cookies);
 
+  if (!req.cookies.jwt) {
+    return res.status(403).json({ status: 'fail', message: "Aucun token trouvé" });
+  }
+
   res.cookie('jwt', 'loggedout', {
     path: "/",
-    secure: process.env.NODE_ENV === 'production',  // Doit être `true` en production (HTTPS)
-    sameSite: 'None', // Indispensable pour les requêtes cross-site
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'None',
     expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true,
-    signed: false, // 🔴 Fix: Ensure it's unsigned to match frontend
-
+    httpOnly: true
   });
-  res.status(200).json({ status: 'success' });
+
+  res.status(200).json({ status: 'success', message: "Déconnexion réussie" });
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
