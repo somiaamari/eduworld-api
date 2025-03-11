@@ -171,10 +171,11 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.logout = (req, res) => {
-  console.log("Cookies reçus:", req.cookies);
+  console.log("🔹 Cookies reçus:", req.cookies);
+  console.log("🔹 Headers reçus:", req.headers);
 
   if (!req.cookies.jwt) {
-    return res.status(403).json({ status: 'fail', message: "Aucun token trouvé" });
+    return res.status(403).json({ status: 'fail', message: "Aucun token trouvé dans les cookies" });
   }
 
   res.cookie('jwt', 'loggedout', {
@@ -187,6 +188,7 @@ exports.logout = (req, res) => {
 
   res.status(200).json({ status: 'success', message: "Déconnexion réussie" });
 };
+
 
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
