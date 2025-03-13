@@ -196,6 +196,8 @@ exports.logout = (req, res) => {
   });
   console.log("na7ina lcookies")
   res.status(200).json({ message: "User logged out" });
+  res.redirect("https://edduworld.netlify.app"); // Redirect back to your frontend
+
   
 };
 
