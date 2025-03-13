@@ -181,10 +181,15 @@ exports.logout = (req, res) => {
   }
 
   res.cookie("jwt", "", {
+
     httpOnly: true,  // Sécurité (empêche l'accès via JS)
     path: "/",
-      secure: req.secure || req.headers['x-forwarded-proto'] === 'https',  // 🔹 Permet d’être en HTTPS en production
-  sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",   // 🔹 Evite les problèmes CORS en local
+    secure: true,  // 👈 Obligatoire car Render est en HTTPS
+    sameSite: "None", 
+  //   httpOnly: true,  // Sécurité (empêche l'accès via JS)
+  //   path: "/",
+  //     secure: req.secure || req.headers['x-forwarded-proto'] === 'https',  // 🔹 Permet d’être en HTTPS en production
+  // sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",   // 🔹 Evite les problèmes CORS en local
   expires: new Date(0), // ✅ Expire immédiatement
   signed: false,
   domain: "edduworld.netlify.app" // ✅ S'assurer que le domaine est correct
