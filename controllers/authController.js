@@ -178,15 +178,18 @@ exports.logout = (req, res) => {
     return res.status(403).json({ status: 'fail', message: "Aucun token trouvé dans les cookies" });
   }
 
-  res.cookie('jwt', 'loggedout', {
+  res.cookie("jwt", "", {
+    httpOnly: true,  // Sécurité (empêche l'accès via JS)
     path: "/",
-    secure: false,  // 🔴 Tester avec `false` pour voir s'il est bloqué par HTTPS
-    sameSite: 'Lax',
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true
+    secure: process.env.NODE_ENV === 'production',  // Doit être `true` en production (HTTPS)
+    sameSite: 'None', // Indispensable pour les requêtes cross-site
+    expires: new Date(0), // Expire immédiatement
+    signed: false,
+    
   });
-
-  res.status(200).json({ status: 'success', message: "Déconnexion réussie" });
+  console.log("na7ina lcookies")
+  res.status(200).json({ message: "User logged out" });
+  
 };
 
 
