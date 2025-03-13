@@ -15,8 +15,10 @@ const createSendToken = (user, statusCode, req, res) => {
   res.cookie('jwt', token, {
     httpOnly: true,  // Sécurité (empêche l'accès via JS)
     path: "/",
-    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',  // 🔹 Permet d’être en HTTPS en production
-    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",   // 🔹 Evite les problèmes CORS en local
+    secure: true,  // 👈 Obligatoire car Render est en HTTPS
+    sameSite: "None",
+    // secure: req.secure || req.headers['x-forwarded-proto'] === 'https',  // 🔹 Permet d’être en HTTPS en production
+    // sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",   // 🔹 Evite les problèmes CORS en local
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
