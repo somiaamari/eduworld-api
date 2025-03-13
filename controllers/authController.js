@@ -181,8 +181,8 @@ exports.logout = (req, res) => {
   res.cookie("jwt", "", {
     httpOnly: true,  // Sécurité (empêche l'accès via JS)
     path: "/",
-    secure: process.env.NODE_ENV === 'production',  // Doit être `true` en production (HTTPS)
-    sameSite: 'None', // Indispensable pour les requêtes cross-site
+    secure: process.env.NODE_ENV === "production", // Doit être false en local
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // En local, 'Lax' est plus sûr
     expires: new Date(0), // Expire immédiatement
     signed: false,
     
