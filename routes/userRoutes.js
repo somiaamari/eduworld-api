@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/signup', authController.signup);
 router.get("/confirmEmail/:token", authController.confirmEmail);
 router.post('/login', authController.login);
-router.get('/logout', authController.logout);
+router.post('/logout', authController.logout);
 router.get('/isLoggedIn', authController.isLoggedIn);
 
 router.post('/forgotPassword', authController.forgotPassword);

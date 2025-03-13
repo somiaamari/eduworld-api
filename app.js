@@ -59,8 +59,9 @@ app.use(cookieParser()); // ✅ Required to read cookies
 app.use(cors({
   origin: 'https://edduworld.netlify.app', // Allow frontend requests
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  allowedHeaders: 'Content-Type,Authorization'
+  credentials: true, // ✅ Obligatoire pour envoyer les cookies
+  allowedHeaders: 'Content-Type,Authorization',
+  exposedHeaders: 'Set-Cookie' // ✅ Permet aux navigateurs de voir le header Set-Cookie
 }));
 app.set("trust proxy", 1);  // 🔥 Indispensable sur Render/Vercel pour les cookies
 

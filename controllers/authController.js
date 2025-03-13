@@ -15,8 +15,7 @@ const createSendToken = (user, statusCode, req, res) => {
   res.cookie('jwt', token, {
     httpOnly: true,  // Sécurité (empêche l'accès via JS)
     path: "/",
-    secure: process.env.NODE_ENV === 'production',  // Doit être `true` en production (HTTPS)
-    sameSite: 'None', // Indispensable pour les requêtes cross-site
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https', // Assure la compatibilité avec les proxys    sameSite: 'None', // Indispensable pour les requêtes cross-site
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
@@ -181,11 +180,11 @@ exports.logout = (req, res) => {
   res.cookie("jwt", "", {
     httpOnly: true,  // Sécurité (empêche l'accès via JS)
     path: "/",
-    secure: process.env.NODE_ENV === "production", // Doit être false en local
-    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // En local, 'Lax' est plus sûr
-    expires: new Date(0), // Expire immédiatement
-    signed: false,
-    
+     secure: process.env.NODE_ENV === "production", // Doit être false en local
+  sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // En local, 'Lax' est plus sûr
+  expires: new Date(0), // ✅ Expire immédiatement
+  signed: false,
+  domain: "edduworld.netlify.app" // ✅ S'assurer que le domaine est correct
   });
   console.log("na7ina lcookies")
   res.status(200).json({ message: "User logged out" });
