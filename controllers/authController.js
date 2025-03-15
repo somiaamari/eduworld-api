@@ -179,24 +179,14 @@ exports.logout = (req, res) => {
   if (!req.cookies.jwt) {
     return res.status(403).json({ status: 'fail', message: "Aucun token trouvé dans les cookies" });
   }
-
-  res.cookie("jwt", "", {
-
-    httpOnly: true,  // Sécurité (empêche l'accès via JS)
+  res.clearCookie("jwt", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
     path: "/",
-    secure: true,  // 👈 Obligatoire car Render est en HTTPS
-    sameSite: "None", 
-  //   httpOnly: true,  // Sécurité (empêche l'accès via JS)
-  //   path: "/",
-  //     secure: req.secure || req.headers['x-forwarded-proto'] === 'https',  // 🔹 Permet d’être en HTTPS en production
-  // sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",   // 🔹 Evite les problèmes CORS en local
-  expires: new Date(0), // ✅ Expire immédiatement
-  signed: false,
-  domain: "edduworld.netlify.app" // ✅ S'assurer que le domaine est correct
   });
   console.log("na7ina lcookies")
   res.status(200).json({ message: "User logged out" });
-  // res.redirect("https://edduworld.netlify.app"); // Redirect back to your frontend
 
   
 };
