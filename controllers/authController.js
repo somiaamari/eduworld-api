@@ -80,8 +80,14 @@ const createSendToken = (user, statusCode, req, res) => {
 
 //   createSendToken(newUser, 201, req, res);
 // });
-
 exports.signup = catchAsync(async (req, res, next) => {
+  // 🔹 Check if email already exists
+  const existingUser = await User.findOne({ email: req.body.email });
+  if (existingUser) {
+    return next(new AppError("Email already exists. Please use a different email.", 400));
+  }
+
+  // 🔹 Create new user
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -93,10 +99,10 @@ exports.signup = catchAsync(async (req, res, next) => {
   const emailToken = newUser.createEmailConfirmationToken();
   await newUser.save({ validateBeforeSave: false });
 
-  console.log('User after saving:', newUser);
-  console.log('Generated Token:', emailToken);
-  console.log('Hashed Token in DB:', newUser.emailConfirmationToken);
-  console.log('Expires At:', newUser.emailConfirmationExpires);
+  console.log("User after saving:", newUser);
+  console.log("Generated Token:", emailToken);
+  console.log("Hashed Token in DB:", newUser.emailConfirmationToken);
+  console.log("Expires At:", newUser.emailConfirmationExpires);
 
   // 🔹 Construct the confirmation URL
   const confirmURL = `https://edduworld.netlify.app/confirm-email/${emailToken}`;
@@ -106,8 +112,8 @@ exports.signup = catchAsync(async (req, res, next) => {
     await new Email(newUser, confirmURL).sendEmailConfirmation();
 
     res.status(201).json({
-      status: 'success',
-      message: 'User registered successfully! Please check your email for confirmation.',
+      status: "success",
+      message: "User registered successfully! Please check your email for confirmation.",
     });
   } catch (err) {
     // 🔹 If email fails, remove the token
@@ -115,9 +121,10 @@ exports.signup = catchAsync(async (req, res, next) => {
     newUser.emailConfirmationExpires = undefined;
     await newUser.save({ validateBeforeSave: false });
 
-    return next(new AppError('There was an error sending the email. Try again later!', 500));
+    return next(new AppError("There was an error sending the email. Try again later!", 500));
   }
 });
+
 
 exports.confirmEmail = async (req, res, next) => {
   try {
