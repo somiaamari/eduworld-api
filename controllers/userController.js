@@ -105,20 +105,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
       )
       
     );
-    // if (req.file) req.body.photo = req.file.filename; // ✅ Save uploaded filename
-
-    // const updatedUser = await User.findByIdAndUpdate(
-    //   req.user.id,
-    //   { photo: req.body.photo }, // ✅ Save the filename
-    //   { new: true, runValidators: true }
-    // );
-  
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     user: updatedUser
-    //   }
-    // });
+   
   }
 
   // 2) Filtered out unwanted fields names that are not allowed to be updated
